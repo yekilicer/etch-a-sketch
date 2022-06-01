@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="title">
+        ETCH-A-SKETCH
+    </div>
+    <div class="main-container">
+        <div class="options">
+            <div class="color-card">
+                <input type="color" id="input-color" value="#000000">
+                <span>Color Pick</span>
+            </div>
+            <div class="bg-color">
+                <input type="color" id="bg-color" value="#ffffff">
+                <span>Background Color</span>
+            </div>
+            <div class="buttons">
+                <button id="eraser-btn">Eraser Mode</button>
+                <button id="rainbow-btn">Rainbow Mode</button>
+                <button id="shade-btn">Shading Mode</button>
+                <button id="lighten-btn">Lighten Mode</button>
+                <button id="grid-btn">Toggle Grid Lines</button>
+                <div class="range-box">
+                    <input type="range" min="8" max="64" value="16">
+                    <div class="div">Grid Size: 16 x 16</div>
+                    <button id="clear-btn">Clear All</button>
+                </div>
+            </div>
+        </div>
+        <div class="grid-wrapper">
+            <div class="grid-container"></div>
+        </div>
+    </div>
+</body>
+</html>
