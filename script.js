@@ -2,8 +2,8 @@ const DEFAULT_GRID_SIZE = 16;
 let currentColor = "black";
 let currentBgColor = "rgb(255, 255, 255)";
 let currentMode = "color";
-let gridLines = true;
 let mouseDown = false;
+let currentGridSize = 16;
 
 const gridContainer = document.querySelector('.grid-container');
 
@@ -25,30 +25,45 @@ createGrid();
 
 function toggleButton(e) {
     const targetBtn = document.querySelector(`#${e.target.id}`);
-    let isActive = targetBtn.classList.contains("btn-active");
+    
+    if (targetBtn.id === "clear-btn") {       
+        targetBtn.classList.add("btn-active");
+        setTimeout(() => targetBtn.classList.remove("btn-active"), 100);
+        while (gridContainer.firstChild) {
+            gridContainer.removeChild(gridContainer.lastChild);
+        }
+        createGrid(currentGridSize, currentBgColor);
 
-    Array.from(buttons)
-        .filter(button => button.classList.contains("mode-btn"))
-        .map(button => button.classList.remove("btn-active"));
-
-    if (isActive) {
-        targetBtn.classList.remove('btn-active');
-        currentMode = "color" ;
     }
     else {
-        targetBtn.classList.add("btn-active");
-        currentMode = e.target.id;
-    } 
+        let isActive = targetBtn.classList.contains("btn-active");
+        
+        Array.from(buttons)
+        .filter(button => button.classList.contains("mode-btn"))
+        .map(button => button.classList.remove("btn-active"));
+        
+        if (isActive) {
+            targetBtn.classList.remove('btn-active');
+            currentMode = "color" ;
+        }
+        else {
+            targetBtn.classList.add("btn-active");
+            currentMode = e.target.id;
+        }
+    }
+
+
 }
 
 function watchInput(e) {
     // console.log(e.target);
     if (e.target.type === "range") {
+        currentGridSize = e.target.value
         while (gridContainer.firstChild) {
             gridContainer.removeChild(gridContainer.lastChild);
         }
-        document.querySelector(".grid-size").textContent = `Grid Size: ${e.target.value} x ${e.target.value}`;
-        createGrid(e.target.value, currentBgColor);
+        document.querySelector(".grid-size").textContent = `Grid Size: ${currentGridSize} x ${currentGridSize}`;
+        createGrid(currentGridSize, currentBgColor);
 
     }
 
