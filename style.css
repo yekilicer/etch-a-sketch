@@ -5,6 +5,10 @@ html {
     background: cover;
 }
 
+* {
+   user-select: none;
+}
+
 button {
     display: block;
     padding: 0;
@@ -12,6 +16,9 @@ button {
     width: 150px;
     height: 30px;
     width: 100%;
+    background-color: transparent;
+    border: 2px solid rgb(0, 30, 255);
+    color: rgb(255, 255, 0);
 }
 
 
@@ -22,7 +29,7 @@ button {
     background-color: rgb(71, 68, 68);
     width: 200px;
     white-space: nowrap;
-    color: rgb(251, 255, 0);
+    color: rgb(255, 255, 0);
     font-size: 20px;
 }
 
@@ -36,8 +43,13 @@ button {
     flex: 1;
     margin-top: 75px;
     gap: 15px;
-    border: 2px solid black;
-    transition: all ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn-active {
+    transform: scale(0.98);
+    background-color: aquamarine;
+    color: blue;
 }
 
 .buttons .range-box {
@@ -85,10 +97,5 @@ button {
 }
 
 .grid-item {
-    border: 1px solid black;
-}
-
-.btn-active {
-    transform: scale(0.99);
-    background-color: aquamarine;
+    border: 1px solid lightgray;
 }
